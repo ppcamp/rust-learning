@@ -2,6 +2,8 @@
 <img
     src="https://doc.rust-lang.org/book/img/ferris/unsafe.svg"
     alt="Rust mascot"
+    width="50px"
+    height="50px"
     style="display:block; margin:auto; width:50px; height:50px"
 />
 
