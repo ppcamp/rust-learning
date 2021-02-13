@@ -16,7 +16,8 @@ I was reading the rust documentation and examples.
 
 - [rust-learning](#rust-learning)
     - [1. Getting started](#1-getting-started)
-    - [2. A simple game](#2-a-simple-game)
+    - [2. Programming a Guessing Game](#2-programming-a-guessing-game)
+    - [3. Common programming Concepts](#3-common-programming-concepts)
 
 
 <br/>
@@ -34,9 +35,9 @@ cargo build # create the exec
 cargo run   # runs the project
 ```
 
-### 2. A simple game
+### 2. Programming a Guessing Game
 In this section whe learn:
-   * how to add a new package
+   * How to add a new package:
    * handle with input (similar to Java, you'll need to parse every input made as a char buffer)
    * rand numbers
    * match introduction (arrow functions)
@@ -44,7 +45,28 @@ In this section whe learn:
 Check it out by clicking [here][3]
 
 
+### 3. Common programming Concepts
+
+In this section we see some of the rust's concepts:
+  - The **let** keyword allows you to change an imutable variable, i.e., you'll create
+    an variable and will destroy the variable used before.
+  - An `constant` it's like an macro in C programming
+  - The basics [types][4]
+  - The [`char`][5] rust type
+  - Tuples and its destructuring operation
+  - Rust code uses `snake_case` as the conventional style for function and variable names.
+  - Rust doesn’t care where you define your functions, only that they’re defined somewhere.
+  - Expressions do not include ending semicolons.
+  - [Conditionals][6] (if statments)
+  - [Loops][7] and `range` type
+
+
+
 <!-- Links --->
 [1]: https://doc.rust-lang.org/book/ch01-00-getting-started.html
 [2]: https://doc.rust-lang.org/cargo/getting-started/installation.html
 [3]: https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html
+[4]: https://doc.rust-lang.org/book/ch03-02-data-types.html#scalar-types
+[5]: https://doc.rust-lang.org/book/ch03-02-data-types.html#the-character-type
+[6]: https://doc.rust-lang.org/book/ch03-05-control-flow.html
+[7]: https://doc.rust-lang.org/book/ch03-05-control-flow.html
