@@ -2,7 +2,7 @@
 <img
     src="https://doc.rust-lang.org/book/img/ferris/unsafe.svg"
     alt="Rust mascot"
-    style="display:block; margin:auto; width:200px; height:200px"
+    style="display:block; margin:auto; width:50px; height:50px"
 />
 
 # rust-learning
