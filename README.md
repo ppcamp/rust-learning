@@ -18,7 +18,8 @@ I was reading the rust documentation and examples.
   - [1. Getting started](#1-getting-started)
   - [2. Programming a Guessing Game](#2-programming-a-guessing-game)
   - [3. Common programming Concepts](#3-common-programming-concepts)
-  - [4. Ownership](#4-ownership)
+  - [4. Understanding Ownership](#4-understanding-ownership)
+  - [5. Using structs to structure related data](#5-using-structs-to-structure-related-data)
   - [Usefull tips](#usefull-tips)
 
 
@@ -67,7 +68,7 @@ cargo run   # runs the project
 
 <br/>
 
-## 4. Ownership
+## 4. Understanding Ownership
 
 [Reference][book-4-ownership]. In this chapter we learn how rust handles with memory allocation and "de-allocation". Furthermore
 we also learn:
@@ -94,7 +95,15 @@ we also learn:
   - I think that we can't convert the "sliced" string to a real one due to the pointer used to, however, we can create another object and use reference of slice type to do so. The slice type are described [here][book-4-slice]
 
 
+## 5. Using structs to structure related data
 
+[Reference][book-5]. In this section we learn how to create a rust structure (the formatting is quite similar to json objects in js). We also learn:
+  - How define a struct object
+  - How create a struct object using a tuple approach
+  - An example using struct named and unnamed objects
+  - The [debug][book-5-debug] flag. Used to print the objects as a json formatted
+  - Putting a function as in [object oriented][book-5-poo] way method
+  - How rust "autocompletes" the [function calling][book-5-dereferencing]
 
 ---
 
@@ -139,3 +148,11 @@ cargo update # update the packages dependencies in Cargo.toml
 [book-4-memo]: https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#memory-and-allocation
 
 [book-4-slice]: https://doc.rust-lang.org/book/ch04-03-slices.html#the-slice-type
+
+[book-5]: https://doc.rust-lang.org/book/ch05-00-structs.html
+
+[book-5-debug]: https://doc.rust-lang.org/book/ch05-02-example-structs.html#adding-useful-functionality-with-derived-traits
+
+[book-5-poo]: https://doc.rust-lang.org/book/ch05-03-method-syntax.html#defining-methods
+
+[book-5-dereferencing]: https://doc.rust-lang.org/book/ch05-03-method-syntax.html#wheres-the---operator
