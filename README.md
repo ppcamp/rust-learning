@@ -20,6 +20,7 @@ I was reading the rust documentation and examples.
   - [3. Common programming Concepts](#3-common-programming-concepts)
   - [4. Understanding Ownership](#4-understanding-ownership)
   - [5. Using structs to structure related data](#5-using-structs-to-structure-related-data)
+  - [6. Enums and Pattern Matching](#6-enums-and-pattern-matching)
   - [Usefull tips](#usefull-tips)
 
 
@@ -94,6 +95,7 @@ we also learn:
     ```
   - I think that we can't convert the "sliced" string to a real one due to the pointer used to, however, we can create another object and use reference of slice type to do so. The slice type are described [here][book-4-slice]
 
+<br/>
 
 ## 5. Using structs to structure related data
 
@@ -104,6 +106,16 @@ we also learn:
   - The [debug][book-5-debug] flag. Used to print the objects as a json formatted
   - Putting a function as in [object oriented][book-5-poo] way method
   - How rust "autocompletes" the [function calling][book-5-dereferencing]
+
+<br/>
+
+## 6. Enums and Pattern Matching
+[Reference][book-6]. In this chapter we see:
+  - How to handle with `enum` type
+  - The Option<T> object, which contains the Some(val) and None
+  - The if let statment, which can be used to access the enum when you won't used all patterns defined
+  - Acess internal values in enums
+  - Enums used as an class type
 
 ---
 
@@ -156,3 +168,5 @@ cargo update # update the packages dependencies in Cargo.toml
 [book-5-poo]: https://doc.rust-lang.org/book/ch05-03-method-syntax.html#defining-methods
 
 [book-5-dereferencing]: https://doc.rust-lang.org/book/ch05-03-method-syntax.html#wheres-the---operator
+
+[book-6]: https://doc.rust-lang.org/book/ch06-00-enums.html
