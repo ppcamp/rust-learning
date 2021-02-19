@@ -21,7 +21,10 @@ I was reading the rust documentation and examples.
   - [4. Understanding Ownership](#4-understanding-ownership)
   - [5. Using structs to structure related data](#5-using-structs-to-structure-related-data)
   - [6. Enums and Pattern Matching](#6-enums-and-pattern-matching)
+  - [7. Managing Growing Projects with Packages, Crates, and Modules](#7-managing-growing-projects-with-packages-crates-and-modules)
   - [Usefull tips](#usefull-tips)
+    - [Cargo:](#cargo)
+    - [Adding functionalities to cargo](#adding-functionalities-to-cargo)
 
 
 <br/>
@@ -111,34 +114,82 @@ we also learn:
 
 ## 6. Enums and Pattern Matching
 [Reference][book-6]. In this chapter we see:
-  - How to handle with `enum` type
-  - The Option<T> object, which contains the Some(val) and None
-  - The if let statment, which can be used to access the enum when you won't used all patterns defined
-  - Acess internal values in enums
+  - [How to handle][book-6-def] with `enum` type
+  - The [Option<T> object][book-6-object], which contains the Some(val) and None
+  - The [if let statment][book-6-iflet], which can be used to access the enum when you won't used all patterns defined
+  - Acess [internal values in enums][book-6-match]
   - Enums used as an class type
+
+<br/>
+
+## 7. Managing Growing Projects with Packages, Crates, and Modules
+[Reference][book-7]. In this chapter we learn how to handle with modules and libraries etc:
+  - The entire module tree is rooted under the implicit module named crate.
+  - An absolute path starts from a crate root by using a crate name or a literal crate
+  - A relative path starts from the current module and uses self, super, or an identifier in the current module.
+  - Rust put all items inside a module(functions, methods, structs, enums, modules, and constants) are private by default. However you can expose using keyword `pub`
+  - You can use relative paths by putting the keyword `super` before the module
+  - The `use` keyword bring the [module][book-7-use] to the current context
+  - When using `enums` or `structs` it's recommended to use the full path-like, otherwise, you could use the `use` statments [to make them simplier][book-7-conventions].
+  - You can use [aliases][book-7-alias] like js lang when imports.
+  - You can re-export modules by putting a `pub` keyword before `use` statment
+  - [External packages][book-7-external]
+  - You can use nested paths, i.e, `use some::package::{self, some}`
+  - You can glob, `use some::*`
+  - The compiler will also look at `folder_module_name/mod.rs`, so this will work if I create a directory `example` containing a file `mod.rs`, see more by clicking [here][ext-1]
+  - You can create a library with cargo using `cargo new --lib lib_name`, if so, you must add it in the same way you'll do when using crate packages, i.e, updating the `Cargo.toml` using a path to specify where to find them. Check it out by clicking [here][ext-2].
+  - When you aren't using library approach you must push the module into scope with mod keyword;
+
+> - Packages: A Cargo feature that lets you build, test, and share crates
+> - Crates: A tree of modules that produces a library or executable
+> - Modules and use: Let you control the organization, scope, and privacy of paths
+> - Paths: A way of naming an item, such as a struct, function, or module
+
+<br/>
+
+
 
 ---
 
 ## Usefull tips
 
-Cargo:
+### Cargo:
 ```bash
-cargo build  # build the package
-cargo check  # does the same process that build without building an executable
-cargo clean  # clear the executables (target) directory
-cargo init   # create a new rust package in the current directory
-cargo new    # start a new rust package with a new dir
-cargo r      # execute the rust executable
-cargo run    # ... the same as above
-cargo search # similar to pip search
-cargo t      # use the testing rust package to test the programs
-cargo test   # ... the same as above
-cargo update # update the packages dependencies in Cargo.toml
+cargo build             # build the package
+cargo check             # does the same process that build without building an executable
+cargo clean             # clear the executables (target) directory
+cargo init              # create a new rust package in the current directory
+cargo new               # start a new rust package with a new dir
+cargo new --lib newlib  # create new library named newlib
+cargo r                 # execute the rust executable
+cargo run               # ... the same as above
+cargo search            # similar to pip search
+cargo t                 # use the testing rust package to test the programs
+cargo test              # ... the same as above
+cargo update            # update the packages dependencies in Cargo.toml
 ```
 
+### Adding functionalities to cargo
+Tuto based on this [site](https://thenewstack.io/tutorial-import-libraries-of-rust-code-with-crates-io/)
 
+```bash
+cargo install cargo-edit  # install a rust binary that will give more power to cargo
+
+# To install this tool you must to add the following packages libraries also
+sudo apt install openssl libssl-dev
+
+# This tool extends Cargo to allow you to add, remove, and upgrade dependencies by modifying your Cargo.toml file from the command line
+cargo add package         # This automatically add a package into Cargo.toml file
+cargo rm package          # This automatically remove a package from Cargo.toml file
+cargo upgrade             # This automatically upgrade all your packages dependencies
+```
 
 <!-- Links --->
+
+[ext-1]: https://stevedonovan.github.io/rust-gentle-intro/4-modules.html
+
+[ext-2]: https://stackoverflow.com/questions/45519176/how-do-i-use-or-import-a-local-rust-file
+
 [cargo-1]: https://doc.rust-lang.org/cargo/getting-started/installation.html
 
 [book-1]: https://doc.rust-lang.org/book/ch01-00-getting-started.html
@@ -170,3 +221,21 @@ cargo update # update the packages dependencies in Cargo.toml
 [book-5-dereferencing]: https://doc.rust-lang.org/book/ch05-03-method-syntax.html#wheres-the---operator
 
 [book-6]: https://doc.rust-lang.org/book/ch06-00-enums.html
+
+[book-6-def]: https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#defining-an-enum
+
+[book-6-object]: https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#the-option-enum-and-its-advantages-over-null-values
+
+[book-6-match]: https://doc.rust-lang.org/book/ch06-02-match.html#the-match-control-flow-operator
+
+[book-6-iflet]: https://doc.rust-lang.org/book/ch06-03-if-let.html
+
+[book-7]: https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html
+
+[book-7-use]: https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html
+
+[book-7-conventions]: https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#creating-idiomatic-use-paths
+
+[book-7-alias]: https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#providing-new-names-with-the-as-keyword
+
+[book-7-external]: https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#using-external-packages
