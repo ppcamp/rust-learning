@@ -22,6 +22,7 @@ I was reading the rust documentation and examples.
   - [5. Using structs to structure related data](#5-using-structs-to-structure-related-data)
   - [6. Enums and Pattern Matching](#6-enums-and-pattern-matching)
   - [7. Managing Growing Projects with Packages, Crates, and Modules](#7-managing-growing-projects-with-packages-crates-and-modules)
+  - [8. Common Collections](#8-common-collections)
   - [Usefull tips](#usefull-tips)
     - [Cargo:](#cargo)
     - [Adding functionalities to cargo](#adding-functionalities-to-cargo)
@@ -147,6 +148,22 @@ we also learn:
 
 <br/>
 
+## 8. Common Collections
+[Reference][book-8]. In this section we see the "std" equivalent of `C++` for `Rust`. We cover in this section:
+  - [Vectors][book-8-vec] and how to update them
+  - The get method in vector, return us an `Option<T>` type
+  - Ownership when concat strings
+  - Due the [string memory management][book-8-str], you **can't** access string values as in the same way of `C++`, 'cause rust use 2Bytes for each utf-8 char, and index them using byte approach.
+  - Like said in item above, you can't slice using int too, you'll need to use a byte repr way, if so.
+  - [Hash][book-8-hash] will become the owner of the object.
+  - Hash, in generall, overwrite the key.
+  - Hash, by default, it's implemented [focusing in seccurity][book-8-hash-sc]
+
+
+
+
+<br/>
+
 
 
 ---
@@ -239,3 +256,13 @@ cargo upgrade             # This automatically upgrade all your packages depende
 [book-7-alias]: https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#providing-new-names-with-the-as-keyword
 
 [book-7-external]: https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#using-external-packages
+
+[book-8]: https://doc.rust-lang.org/book/ch08-00-common-collections.html
+
+[book-8-vec]: https://doc.rust-lang.org/book/ch08-01-vectors.html
+
+[book-8-str]: https://doc.rust-lang.org/book/ch08-02-strings.html
+
+[book-8-hash]: https://doc.rust-lang.org/book/ch08-03-hash-maps.html#storing-keys-with-associated-values-in-hash-maps
+
+[book-8-hash-sc]: https://doc.rust-lang.org/book/ch08-03-hash-maps.html#hashing-functions
