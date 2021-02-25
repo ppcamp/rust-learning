@@ -23,6 +23,7 @@ I was reading the rust documentation and examples.
   - [6. Enums and Pattern Matching](#6-enums-and-pattern-matching)
   - [7. Managing Growing Projects with Packages, Crates, and Modules](#7-managing-growing-projects-with-packages-crates-and-modules)
   - [8. Common Collections](#8-common-collections)
+  - [9. Error handling](#9-error-handling)
   - [Usefull tips](#usefull-tips)
     - [Cargo:](#cargo)
     - [Adding functionalities to cargo](#adding-functionalities-to-cargo)
@@ -159,7 +160,18 @@ we also learn:
   - Hash, in generall, overwrite the key.
   - Hash, by default, it's implemented [focusing in seccurity][book-8-hash-sc]
 
+<br/>
 
+## 9. Error handling
+[Reference][book-9].
+> Rust groups errors into two major categories: recoverable and unrecoverable errors.
+Anothers infos:
+  - When rust goes to an [unrecoverable error][book-9-error], it will `panic`, and so, it'll backtrace all path to clear memory, by default, however you can change this behavior.
+  - Error [types][book-9-kinds]
+  - `unwrap()` return the `Ok` value, if returned `Err`, will panic!
+  - `expect()` same as `unwrap()`, however, let you to pass a new panic! message.
+  - You can use the `Result` enum to [propagate][book-9-prop] errors (return it to main function or something like that)
+  - [?][book-9-?] mark in rust is used to parse, if Ok, return it to code, if Err, return the err code to main. You only can use it in functions that return `Result<T,E>` type. However, it allows the main function too.
 
 
 <br/>
@@ -266,3 +278,13 @@ cargo upgrade             # This automatically upgrade all your packages depende
 [book-8-hash]: https://doc.rust-lang.org/book/ch08-03-hash-maps.html#storing-keys-with-associated-values-in-hash-maps
 
 [book-8-hash-sc]: https://doc.rust-lang.org/book/ch08-03-hash-maps.html#hashing-functions
+
+[book-9]: https://doc.rust-lang.org/book/ch09-00-error-handling.html
+
+[book-9-error]: https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html#unwinding-the-stack-or-aborting-in-response-to-a-panic
+
+[book-9-kinds]: https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#matching-on-different-errors
+
+[book-9-prop]: https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#propagating-errors
+
+[book-9-?]: https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#propagating-errors
