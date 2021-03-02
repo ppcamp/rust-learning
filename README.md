@@ -1,13 +1,15 @@
 
-<img
-    src="https://doc.rust-lang.org/book/img/ferris/unsafe.svg"
-    alt="Rust mascot"
-    width="50px"
-    height="50px"
-    style="display:block; margin:auto; width:50px; height:50px"
-/>
+<p align="center">
+  <img
+      src="https://doc.rust-lang.org/book/img/ferris/unsafe.svg"
+      alt="Rust mascot"
+      width="70px"
+      height="70px"
+  />
+</p>
 
 # rust-learning
+
 A repository that will be used to put everything that I've did when
 I was reading the rust documentation and examples.
 
@@ -24,6 +26,7 @@ I was reading the rust documentation and examples.
   - [7. Managing Growing Projects with Packages, Crates, and Modules](#7-managing-growing-projects-with-packages-crates-and-modules)
   - [8. Common Collections](#8-common-collections)
   - [9. Error handling](#9-error-handling)
+  - [10. Generic types, traits and lifetimes](#10-generic-types-traits-and-lifetimes)
   - [Usefull tips](#usefull-tips)
     - [Cargo:](#cargo)
     - [Adding functionalities to cargo](#adding-functionalities-to-cargo)
@@ -176,7 +179,28 @@ Anothers infos:
 
 <br/>
 
+## 10. Generic types, traits and lifetimes
+[Reference][book-10]. In this section we see the "template" equivalent of `C++`.
+<mark>This chapter explain one of the most important things about rust working</mark>
+  - You can use a generic type to simplify functions.
+  - There's a tradeoff in compilation time when using generic methods.
+  - [Traits][book-10-traits] are like `interface` in other langs like *Java* or *Javascript*
+  - To implement a trait, we must define a type and then, using `impl TRAITname for TYPEname`.
+  - To use a trait for another module you must import them too
+  - If we want to force the same type in generic parameters, we must use a [trait bound][book-10-traits-v] (the most verbose way)
+  - We can use [multiples][book-10-multi-traits] implementations for traits
+  - When handling with multiples traits, we can use the [where][book-10-where] clauses
+  - We can return a trait instead of its type implementation
+  - We can set a trait bound in a `impl`. In this approach, the generic trait will work like a [conditional][book-10-cond-trait]
+  - Sometimes, you'll need to specify an lifetime anotation to rust. The [lifetimes][book-10-lifetime] annotations are usefull to prevent your code to go to `trash` values or `null`,
+  - The rust can handle with functions that have one and-only-one parameter, that tooks a reference and return a reference in a function. This is because rust have some codes that are added into compiler. They are named as [lifetime elision rules][book-10-elision]. In another workds, `Rust` will infer the lifetime for references in basic cases.
+  - The `static` lifetime will make the reference to be global in your code.
 
+> The patterns programmed into Rust’s analysis of references are called the lifetime elision rules.
+
+
+
+<br/>
 
 ---
 
@@ -288,3 +312,19 @@ cargo upgrade             # This automatically upgrade all your packages depende
 [book-9-prop]: https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#propagating-errors
 
 [book-9-?]: https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#propagating-errors
+
+[book-10]: https://doc.rust-lang.org/book/ch10-00-generics.html
+
+[book-10-traits]: https://doc.rust-lang.org/book/ch10-02-traits.html
+
+[book-10-traits-v]: https://doc.rust-lang.org/book/ch10-02-traits.html
+
+[book-10-multi-traits]: https://doc.rust-lang.org/book/ch10-02-traits.html#specifying-multiple-trait-bounds-with-the--syntax
+
+[book-10-where]: https://doc.rust-lang.org/book/ch10-02-traits.html#clearer-trait-bounds-with-where-clauses
+
+[book-10-cond-trait]: https://doc.rust-lang.org/book/ch10-02-traits.html#using-trait-bounds-to-conditionally-implement-methods
+
+[book-10-lifetime]: https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html#lifetime-annotations-in-function-signatures
+
+[book-10-elision]: https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html#lifetime-elision
