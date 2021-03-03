@@ -28,6 +28,8 @@ I was reading the rust documentation and examples.
   - [9. Error handling](#9-error-handling)
   - [10. Generic types, traits and lifetimes](#10-generic-types-traits-and-lifetimes)
   - [11. Writing Automated Tests](#11-writing-automated-tests)
+  - [12. An I/O project: Building a command line program](#12-an-io-project-building-a-command-line-program)
+  - [13.](#13)
   - [Usefull tips](#usefull-tips)
     - [Cargo:](#cargo)
     - [Adding functionalities to cargo](#adding-functionalities-to-cargo)
@@ -227,6 +229,19 @@ function behavior for example.
 
 
 
+<br/>
+
+## 12. An I/O project: Building a command line program
+[Reference][book-12]. This chapter is a recap of the many skills you’ve learned so far and an exploration of a few more standard library features.
+  - There's a huge cost when using `clone()` so, most of rustaceans don't use this.
+  - This chapter is very simple, most of work here was already done.
+
+
+<br/>
+
+## 13.
+
+
 ---
 
 ## Usefull tips
@@ -361,3 +376,7 @@ cargo upgrade             # This automatically upgrade all your packages depende
 [book-11-private]: https://doc.rust-lang.org/book/ch11-03-test-organization.html#testing-private-functions
 
 [book-11-e2e]: https://doc.rust-lang.org/book/ch11-03-test-organization.html#the-tests-directory
+
+[book-12]: https://doc.rust-lang.org/book/ch12-00-an-io-project.html
+
+[book-12-a]: https://doc.rust-lang.org/book/ch12-00-an-io-project.html
