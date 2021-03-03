@@ -27,6 +27,7 @@ I was reading the rust documentation and examples.
   - [8. Common Collections](#8-common-collections)
   - [9. Error handling](#9-error-handling)
   - [10. Generic types, traits and lifetimes](#10-generic-types-traits-and-lifetimes)
+  - [11. Writing Automated Tests](#11-writing-automated-tests)
   - [Usefull tips](#usefull-tips)
     - [Cargo:](#cargo)
     - [Adding functionalities to cargo](#adding-functionalities-to-cargo)
@@ -198,9 +199,33 @@ Anothers infos:
 
 > The patterns programmed into Rust’s analysis of references are called the lifetime elision rules.
 
-
-
 <br/>
+
+## 11. Writing Automated Tests
+[Reference][book-11]. Rust brings an suite to test your code by default. This feature allows you to check some
+function behavior for example.
+  - To create a test, you should add a `test` atribute: `#[test]`
+  - The common practice when handling with [unitary tests][ext-3] is to put them inside the proper modules files.
+  - By default, the tests runs in many threads, however, you can type:
+  ```bash
+  # run tests in single core
+  cargo test -- --test-threads=1
+  ```
+  - You can type:
+  ```bash
+  # to show the second parameter of an assert_eq|ne macro on success cases
+  cargo test -- --show-output
+  # to run tests that matches with this name
+  cargo test one_hundred
+  ```
+  - You can run test over [private][book-11-private] methods too
+  - When you use `#[cfg(test)]` this will isolate your tests from the rest of code, so, the tests will only be builded when requested by `cargo test`
+  - Rust also provides a ["e2e" test way][book-11-e2e].
+    - To run e2e tests, the modules must be inside `lib.rs`'s file (otherwise, you can't include them as crate);
+    - The tests must be inside `tests` directory, which is in the root folder, aside with `src`.
+  - You can also, include a crate that will only be used in tests and benchmarks by defining them under `[dev-dependencies]`
+
+
 
 ---
 
@@ -242,6 +267,8 @@ cargo upgrade             # This automatically upgrade all your packages depende
 [ext-1]: https://stevedonovan.github.io/rust-gentle-intro/4-modules.html
 
 [ext-2]: https://stackoverflow.com/questions/45519176/how-do-i-use-or-import-a-local-rust-file
+
+[ext-3]: https://stackoverflow.com/a/39009227/10013122
 
 [cargo-1]: https://doc.rust-lang.org/cargo/getting-started/installation.html
 
@@ -328,3 +355,9 @@ cargo upgrade             # This automatically upgrade all your packages depende
 [book-10-lifetime]: https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html#lifetime-annotations-in-function-signatures
 
 [book-10-elision]: https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html#lifetime-elision
+
+[book-11]: https://doc.rust-lang.org/book/ch11-00-testing.html
+
+[book-11-private]: https://doc.rust-lang.org/book/ch11-03-test-organization.html#testing-private-functions
+
+[book-11-e2e]: https://doc.rust-lang.org/book/ch11-03-test-organization.html#the-tests-directory
